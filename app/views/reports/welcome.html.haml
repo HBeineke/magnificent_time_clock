@@ -1,5 +1,5 @@
 %h1 My Records
-- @record_sets.each do |rs_y|
+- @reports.each do |r_y|
   %table.table
     %thead
       %tr
@@ -11,9 +11,9 @@
         %th Break Time
         %th Work Time
 
-    - rs_y.record_sets.each do |rs_m|
+    - r_y.reports.each do |r_m|
       %tbody
-        - rs_m.time_cards.each do |r|
+        - r_m.time_cards.each do |r|
           %tr
             %td= r.work_start.to_date
             %td= r.work_start.to_s(:time)

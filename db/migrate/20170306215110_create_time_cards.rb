@@ -5,7 +5,7 @@ class CreateTimeCards < ActiveRecord::Migration[5.0]
       t.datetime :work_end
       t.datetime :break_start
       t.datetime :break_end
-      t.belongs_to :record_set
+      t.belongs_to :report
 
       t.timestamps
     end

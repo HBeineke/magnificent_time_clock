@@ -1,5 +1,5 @@
 class TimeCard < ApplicationRecord
-  belongs_to :record_set
+  belongs_to :report
 
   # decorator
   def break_time
