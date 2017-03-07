@@ -1,0 +1,14 @@
+%nav.navbar.navbar-toggleable-md.navbar-inverse.bg-primary
+  .container
+    %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    %a.navbar-brand{:href => "#"} Magnificent Time Clock
+    #navbarNavDropdown.collapse.navbar-collapse
+      .mr-auto
+      %ul.navbar-nav
+        - if user_signed_in?
+          %li.nav-item= link_to 'Edit account', edit_user_registration_path, class: 'nav-link'
+          %li.nav-item= link_to 'Sign out', destroy_user_session_path, :method=>'delete', class: 'nav-link'
+        - else
+          %li.nav-item= link_to 'Sign in', new_user_session_path, class: 'nav-link'
+          %li.nav-item= link_to 'Sign up', new_user_registration_path, class: 'nav-link'
