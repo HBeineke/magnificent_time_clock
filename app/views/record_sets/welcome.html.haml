@@ -13,7 +13,7 @@
 
     - rs_y.record_sets.each do |rs_m|
       %tbody
-        - rs_m.records.each do |r|
+        - rs_m.time_cards.each do |r|
           %tr
             %td= r.work_start.to_date
             %td= r.work_start.to_s(:time)

@@ -1,4 +1,4 @@
-class Record < ApplicationRecord
+class TimeCard < ApplicationRecord
   belongs_to :record_set
 
   # decorator

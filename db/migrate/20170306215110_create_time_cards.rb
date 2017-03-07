@@ -1,6 +1,6 @@
-class CreateRecords < ActiveRecord::Migration[5.0]
+class CreateTimeCards < ActiveRecord::Migration[5.0]
   def change
-    create_table :records do |t|
+    create_table :time_cards do |t|
       t.datetime :work_start
       t.datetime :work_end
       t.datetime :break_start

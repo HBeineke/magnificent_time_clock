@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.delete_all
 RecordSet.delete_all
-Record.delete_all
+TimeCard.delete_all
 
 user = CreateAdminService.new.call
 
@@ -15,7 +15,7 @@ record_set_year = RecordSet.create(user: user)
 record_set_month = RecordSet.create(record_set: record_set_year)
 
 25.times.each do |day|
-  Record.create!(
+  TimeCard.create!(
     work_start: DateTime.new(2016, 1, day + 1, 17) - 8.hours,
     work_end: DateTime.new(2016, 1, day + 1, 17, 30),
     break_start: DateTime.new(2016, 1, day + 1, 17) - 4.hours,
@@ -25,7 +25,7 @@ record_set_month = RecordSet.create(record_set: record_set_year)
 end
 
 25.times.each do |day|
-  Record.create!(
+  TimeCard.create!(
     work_start: DateTime.new(2016,  2, day + 1, 17) - 8.hours,
     work_end: DateTime.new(2016, 2, day + 1, 17, 30),
     break_start: DateTime.new(2016, 2, day + 1, 17) - 4.hours,
@@ -39,7 +39,7 @@ record_set_year = RecordSet.create(user: user)
 record_set_month = RecordSet.create(record_set: record_set_year)
 
 25.times.each do |day|
-  Record.create!(
+  TimeCard.create!(
     work_start: DateTime.new(2015, 1, day + 1, 17) - 8.hours,
     work_end: DateTime.new(2015, 1, day + 1, 17, 30),
     break_start: DateTime.new(2015, 1, day + 1, 17) - 4.hours,
@@ -49,7 +49,7 @@ record_set_month = RecordSet.create(record_set: record_set_year)
 end
 
 25.times.each do |day|
-  Record.create!(
+  TimeCard.create!(
     work_start: DateTime.new(2015,  2, day + 1, 17) - 8.hours,
     work_end: DateTime.new(2015, 2, day + 1, 17, 30),
     break_start: DateTime.new(2015, 2, day + 1, 17) - 4.hours,

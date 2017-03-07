@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170306215110) do
     t.index ["user_id"], name: "index_record_sets_on_user_id"
   end
 
-  create_table "records", force: :cascade do |t|
+  create_table "time_cards", force: :cascade do |t|
     t.datetime "work_start"
     t.datetime "work_end"
     t.datetime "break_start"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170306215110) do
     t.integer  "record_set_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["record_set_id"], name: "index_records_on_record_set_id"
+    t.index ["record_set_id"], name: "index_time_cards_on_record_set_id"
   end
 
   create_table "users", force: :cascade do |t|
