@@ -11,9 +11,8 @@ TimeCard.delete_all
 
 user = CreateAdminService.new.call
 
-report_year = Report.create(user: user)
-report_month = Report.create(report: report_year)
-
+report_year = ReportYear.create(user: user, report_date: DateTime.new(2016, 1, 1))
+report_month = ReportMonth.create(report: report_year, report_date: DateTime.new(2016, 1, 1))
 25.times.each do |day|
   TimeCard.create!(
     work_start: DateTime.new(2016, 1, day + 1, 17) - 8.hours,
@@ -24,6 +23,7 @@ report_month = Report.create(report: report_year)
   )
 end
 
+report_month = ReportMonth.create(report: report_year, report_date: DateTime.new(2016, 2, 1))
 25.times.each do |day|
   TimeCard.create!(
     work_start: DateTime.new(2016,  2, day + 1, 17) - 8.hours,
@@ -35,9 +35,8 @@ end
 end
 
 
-report_year = Report.create(user: user)
-report_month = Report.create(report: report_year)
-
+report_year = ReportYear.create(user: user, report_date: DateTime.new(2015, 1, 1))
+report_month = ReportMonth.create(report: report_year, report_date: DateTime.new(2015, 1, 1))
 25.times.each do |day|
   TimeCard.create!(
     work_start: DateTime.new(2015, 1, day + 1, 17) - 8.hours,
@@ -48,6 +47,7 @@ report_month = Report.create(report: report_year)
   )
 end
 
+report_month = ReportMonth.create(report: report_year, report_date: DateTime.new(2015, 2, 1))
 25.times.each do |day|
   TimeCard.create!(
     work_start: DateTime.new(2015,  2, day + 1, 17) - 8.hours,

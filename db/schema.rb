@@ -15,8 +15,10 @@ ActiveRecord::Schema.define(version: 20170306215110) do
   create_table "reports", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "report_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "type"
+    t.datetime "report_date"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["report_id"], name: "index_reports_on_report_id"
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
