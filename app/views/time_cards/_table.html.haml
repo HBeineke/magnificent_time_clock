@@ -1,0 +1,21 @@
+%table.table
+  %thead
+    %tr
+      %th Date
+      %th Work Start
+      %th Break Start
+      %th Break End
+      %th Work End
+      %th Break Time
+      %th Work Time
+
+
+  - time_cards.each do |r|
+    %tr
+      %td= r.work_start.to_date
+      %td= r.work_start.to_s(:time)
+      %td= r.break_start.to_s(:time)
+      %td= r.break_end.to_s(:time)
+      %td= r.work_end.to_s(:time)
+      %td= r.break_time
+      %td= r.work_time

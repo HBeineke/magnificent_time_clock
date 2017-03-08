@@ -1,0 +1,8 @@
+%h1 Yearly Report
+
+- if @report
+  %h2 Months
+  = render 'report_months/table', reports: @report.reports
+
+  %h2 Result
+  %div ...

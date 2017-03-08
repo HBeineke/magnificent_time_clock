@@ -1,0 +1,8 @@
+%h1 Weekly Report
+
+- if @report
+  %h2 Days
+  = render 'time_cards/table', time_cards: @report.time_cards
+
+  %h2 Result
+  %div ...
