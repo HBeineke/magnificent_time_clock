@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  root to: 'report_totals#show'
+  root to: 'reports/roots#show'
   devise_for :users, :path => 'accounts'
 
-  resources :report_totals, only: [:show]
-  resources :report_years, only: [:show]
-  resources :report_months, only: [:show]
-  resources :report_weeks, only: [:show]
-  resources :report_days, only: [:show]
+  namespace :reports do
+    resources :roots, only: [:show]
+    resources :years, only: [:show]
+    resources :months, only: [:show]
+    resources :weeks, only: [:show]
+    resources :days, only: [:show]
+  end
+
 end

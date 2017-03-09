@@ -11,12 +11,12 @@ TimeCard.delete_all
 
 user = CreateAdminService.new.call
 
-report_total = ReportTotal.create(user: user)
-report_year = ReportYear.create(report: report_total, report_date: DateTime.new(2016, 1, 1))
-report_month = ReportMonth.create(report: report_year, report_date: DateTime.new(2016, 1, 1))
-report_week = ReportWeek.create(report: report_month, report_date: DateTime.new(2016, 1, 1))
+report_total = Reports::Root.create(user: user)
+report_year = Reports::Year.create(report: report_total, report_date: DateTime.new(2016, 1, 1))
+report_month = Reports::Month.create(report: report_year, report_date: DateTime.new(2016, 1, 1))
+report_week = Reports::Week.create(report: report_month, report_date: DateTime.new(2016, 1, 1))
 7.times.each do |day|
-  report_day = ReportDay.create(report: report_week, report_date: DateTime.new(2016, 1, 1))
+  report_day = Reports::Day.create(report: report_week, report_date: DateTime.new(2016, 1, 1))
   d = report_day.report_date.day + day + 1
   TimeCard.create!(
     work_start: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
@@ -28,7 +28,7 @@ report_week = ReportWeek.create(report: report_month, report_date: DateTime.new(
 end
 
 7.times.each do |day|
-  report_day = ReportDay.create(report: report_week, report_date: DateTime.new(2016, 1, 8))
+  report_day = Reports::Day.create(report: report_week, report_date: DateTime.new(2016, 1, 8))
   d = report_day.report_date.day + day + 1
   TimeCard.create!(
     work_start: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
@@ -41,11 +41,11 @@ end
 
 
 
-report_year = ReportYear.create(report: report_total, report_date: DateTime.new(2015, 1, 1))
-report_month = ReportMonth.create(report: report_year, report_date: DateTime.new(2015, 1, 1))
-report_week = ReportWeek.create(report: report_month, report_date: DateTime.new(2015, 1, 1))
+report_year = Reports::Year.create(report: report_total, report_date: DateTime.new(2015, 1, 1))
+report_month = Reports::Month.create(report: report_year, report_date: DateTime.new(2015, 1, 1))
+report_week = Reports::Week.create(report: report_month, report_date: DateTime.new(2015, 1, 1))
 7.times.each do |day|
-  report_day = ReportDay.create(report: report_week, report_date: DateTime.new(2015, 1, 1))
+  report_day = Reports::Day.create(report: report_week, report_date: DateTime.new(2015, 1, 1))
   d = report_day.report_date.day + day + 1
   TimeCard.create!(
     work_start: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
@@ -57,7 +57,7 @@ report_week = ReportWeek.create(report: report_month, report_date: DateTime.new(
 end
 
 7.times.each do |day|
-  report_day = ReportDay.create(report: report_week, report_date: DateTime.new(2015, 1, 8))
+  report_day = Reports::Day.create(report: report_week, report_date: DateTime.new(2015, 1, 8))
   d = report_day.report_date.day + day + 1
   TimeCard.create!(
     work_start: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
