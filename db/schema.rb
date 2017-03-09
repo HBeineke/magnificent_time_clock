@@ -23,15 +23,15 @@ ActiveRecord::Schema.define(version: 20170306215110) do
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
-  create_table "time_cards", force: :cascade do |t|
-    t.datetime "work_start"
-    t.datetime "work_end"
-    t.datetime "break_start"
-    t.datetime "break_end"
+  create_table "time_periods", force: :cascade do |t|
+    t.datetime "started_at"
+    t.datetime "ended_at"
     t.integer  "report_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["report_id"], name: "index_time_cards_on_report_id"
+    t.integer  "time_period_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["report_id"], name: "index_time_periods_on_report_id"
+    t.index ["time_period_id"], name: "index_time_periods_on_time_period_id"
   end
 
   create_table "users", force: :cascade do |t|

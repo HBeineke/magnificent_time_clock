@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.delete_all
 Report.delete_all
-TimeCard.delete_all
+TimePeriod.delete_all
 
 user = CreateAdminService.new.call
 
@@ -18,11 +18,9 @@ report_week = Reports::Week.create(report: report_month, report_date: DateTime.n
 7.times.each do |day|
   report_day = Reports::Day.create(report: report_week, report_date: DateTime.new(2016, 1, 1))
   d = report_day.report_date.day + day + 1
-  TimeCard.create!(
-    work_start: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
-    work_end: DateTime.new(2016, 1, d + 1, 17, 30),
-    break_start: DateTime.new(2016, 1, d, 17) - 4.hours,
-    break_end: DateTime.new(2016, 1, d, 17) - 3.hours - 30.minutes,
+  TimePeriod.create!(
+    started_at: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
+    ended_at: DateTime.new(2016, 1, d + 1, 17, 30),
     report: report_day
   )
 end
@@ -30,11 +28,9 @@ end
 7.times.each do |day|
   report_day = Reports::Day.create(report: report_week, report_date: DateTime.new(2016, 1, 8))
   d = report_day.report_date.day + day + 1
-  TimeCard.create!(
-    work_start: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
-    work_end: DateTime.new(2016, 1, d + 1, 17, 30),
-    break_start: DateTime.new(2016, 1, d, 17) - 4.hours,
-    break_end: DateTime.new(2016, 1, d, 17) - 3.hours - 30.minutes,
+  TimePeriod.create!(
+    started_at: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
+    ended_at: DateTime.new(2016, 1, d + 1, 17, 30),
     report: report_day
   )
 end
@@ -47,11 +43,9 @@ report_week = Reports::Week.create(report: report_month, report_date: DateTime.n
 7.times.each do |day|
   report_day = Reports::Day.create(report: report_week, report_date: DateTime.new(2015, 1, 1))
   d = report_day.report_date.day + day + 1
-  TimeCard.create!(
-    work_start: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
-    work_end: DateTime.new(2016, 1, d + 1, 17, 30),
-    break_start: DateTime.new(2016, 1, d, 17) - 4.hours,
-    break_end: DateTime.new(2016, 1, d, 17) - 3.hours - 30.minutes,
+  TimePeriod.create!(
+    started_at: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
+    ended_at: DateTime.new(2016, 1, d + 1, 17, 30),
     report: report_day
   )
 end
@@ -59,11 +53,9 @@ end
 7.times.each do |day|
   report_day = Reports::Day.create(report: report_week, report_date: DateTime.new(2015, 1, 8))
   d = report_day.report_date.day + day + 1
-  TimeCard.create!(
-    work_start: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
-    work_end: DateTime.new(2016, 1, d + 1, 17, 30),
-    break_start: DateTime.new(2016, 1, d, 17) - 4.hours,
-    break_end: DateTime.new(2016, 1, d, 17) - 3.hours - 30.minutes,
+  TimePeriod.create!(
+    started_at: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
+    ended_at: DateTime.new(2016, 1, d + 1, 17, 30),
     report: report_day
   )
 end

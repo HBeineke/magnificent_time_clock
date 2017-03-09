@@ -1,0 +1,15 @@
+%table.table
+  %thead
+    %tr
+      %th Date
+      %th Work Start
+      %th Work End
+      %th Work Time
+
+
+  - time_periods.each do |r|
+    %tr
+      %td= r.started_at.to_date
+      %td= r.started_at.to_s(:time)
+      %td= r.ended_at.to_s(:time)
+      %td= r.duration
