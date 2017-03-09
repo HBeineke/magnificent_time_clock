@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :report_years, only: [:show]
   resources :report_months, only: [:show]
   resources :report_weeks, only: [:show]
+  resources :report_days, only: [:show]
 end

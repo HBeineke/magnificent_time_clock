@@ -1,0 +1,12 @@
+%table.table
+  %thead
+    %tr
+      %th Title
+      %th Report Date
+      %th
+
+  - reports.each do |r|
+    %tr
+      %td= r.title
+      %td= r.report_date
+      %td= link_to 'details', r

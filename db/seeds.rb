@@ -16,22 +16,26 @@ report_year = ReportYear.create(report: report_total, report_date: DateTime.new(
 report_month = ReportMonth.create(report: report_year, report_date: DateTime.new(2016, 1, 1))
 report_week = ReportWeek.create(report: report_month, report_date: DateTime.new(2016, 1, 1))
 7.times.each do |day|
+  report_day = ReportDay.create(report: report_week, report_date: DateTime.new(2016, 1, 1))
+  d = report_day.report_date.day + day + 1
   TimeCard.create!(
-    work_start: DateTime.new(2016, 1, report_week.report_date.day + day + 1, 17) - 8.hours,
-    work_end: DateTime.new(2016, 1, report_week.report_date.day + day + 1, 17, 30),
-    break_start: DateTime.new(2016, 1, report_week.report_date.day + day + 1, 17) - 4.hours,
-    break_end: DateTime.new(2016, 1, report_week.report_date.day + day + 1, 17) - 3.hours - 30.minutes,
-    report: report_week
+    work_start: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
+    work_end: DateTime.new(2016, 1, d + 1, 17, 30),
+    break_start: DateTime.new(2016, 1, d, 17) - 4.hours,
+    break_end: DateTime.new(2016, 1, d, 17) - 3.hours - 30.minutes,
+    report: report_day
   )
 end
-report_week = ReportWeek.create(report: report_month, report_date: DateTime.new(2016, 1, 8))
+
 7.times.each do |day|
+  report_day = ReportDay.create(report: report_week, report_date: DateTime.new(2016, 1, 8))
+  d = report_day.report_date.day + day + 1
   TimeCard.create!(
-    work_start: DateTime.new(2016, 1, report_week.report_date.day + day + 1, 17) - 8.hours,
-    work_end: DateTime.new(2016, 1, report_week.report_date.day + day + 1, 17, 30),
-    break_start: DateTime.new(2016, 1, report_week.report_date.day + day + 1, 17) - 4.hours,
-    break_end: DateTime.new(2016, 1, report_week.report_date.day + day + 1, 17) - 3.hours - 30.minutes,
-    report: report_week
+    work_start: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
+    work_end: DateTime.new(2016, 1, d + 1, 17, 30),
+    break_start: DateTime.new(2016, 1, d, 17) - 4.hours,
+    break_end: DateTime.new(2016, 1, d, 17) - 3.hours - 30.minutes,
+    report: report_day
   )
 end
 
@@ -41,21 +45,25 @@ report_year = ReportYear.create(report: report_total, report_date: DateTime.new(
 report_month = ReportMonth.create(report: report_year, report_date: DateTime.new(2015, 1, 1))
 report_week = ReportWeek.create(report: report_month, report_date: DateTime.new(2015, 1, 1))
 7.times.each do |day|
+  report_day = ReportDay.create(report: report_week, report_date: DateTime.new(2015, 1, 1))
+  d = report_day.report_date.day + day + 1
   TimeCard.create!(
-    work_start: DateTime.new(2015, 1, report_week.report_date.day + day + 1, 17) - 8.hours,
-    work_end: DateTime.new(2015, 1, report_week.report_date.day + day + 1, 17, 30),
-    break_start: DateTime.new(2015, 1, report_week.report_date.day + day + 1, 17) - 4.hours,
-    break_end: DateTime.new(2015, 1, report_week.report_date.day + day + 1, 17) - 3.hours - 30.minutes,
-    report: report_week
+    work_start: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
+    work_end: DateTime.new(2016, 1, d + 1, 17, 30),
+    break_start: DateTime.new(2016, 1, d, 17) - 4.hours,
+    break_end: DateTime.new(2016, 1, d, 17) - 3.hours - 30.minutes,
+    report: report_day
   )
 end
-report_week = ReportWeek.create(report: report_month, report_date: DateTime.new(2016, 1, 8))
+
 7.times.each do |day|
+  report_day = ReportDay.create(report: report_week, report_date: DateTime.new(2015, 1, 8))
+  d = report_day.report_date.day + day + 1
   TimeCard.create!(
-    work_start: DateTime.new(2015, 1, report_week.report_date.day + day + 1, 17) - 8.hours,
-    work_end: DateTime.new(2015, 1, report_week.report_date.day + day + 1, 17, 30),
-    break_start: DateTime.new(2015, 1, report_week.report_date.day + day + 1, 17) - 4.hours,
-    break_end: DateTime.new(2015, 1, report_week.report_date.day + day + 1, 17) - 3.hours - 30.minutes,
-    report: report_week
+    work_start: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
+    work_end: DateTime.new(2016, 1, d + 1, 17, 30),
+    break_start: DateTime.new(2016, 1, d, 17) - 4.hours,
+    break_end: DateTime.new(2016, 1, d, 17) - 3.hours - 30.minutes,
+    report: report_day
   )
 end
