@@ -1,5 +1,5 @@
 class Period < ApplicationRecord
-  belongs_to :report
+  belongs_to :parent, polymorphic: true
   has_one :taggable, as: :parent
   has_one :tag, through: :taggable
 

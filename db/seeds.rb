@@ -27,7 +27,7 @@ report_week = Reports::Week.create(report: report_month, report_date: DateTime.n
   Period.create!(
     started_at: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
     ended_at: DateTime.new(2016, 1, d + 1, 17, 30),
-    report: report_day,
+    parent: report_day,
     tag: tag_work
   )
 end
@@ -38,7 +38,7 @@ end
   Period.create!(
     started_at: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
     ended_at: DateTime.new(2016, 1, d + 1, 17, 30),
-    report: report_day,
+    parent: report_day,
     tag: tag_work
   )
 end
@@ -54,7 +54,7 @@ report_week = Reports::Week.create(report: report_month, report_date: DateTime.n
   Period.create!(
     started_at: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
     ended_at: DateTime.new(2016, 1, d + 1, 17, 30),
-    report: report_day,
+    parent: report_day,
     tag: tag_work
   )
 end
@@ -65,7 +65,7 @@ end
   Period.create!(
     started_at: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
     ended_at: DateTime.new(2016, 1, d + 1, 17, 30),
-    report: report_day,
+    parent: report_day,
     tag: tag_work
   )
 end

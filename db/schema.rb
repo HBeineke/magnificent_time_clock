@@ -15,12 +15,13 @@ ActiveRecord::Schema.define(version: 20170315212455) do
   create_table "periods", force: :cascade do |t|
     t.datetime "started_at"
     t.datetime "ended_at"
-    t.integer  "report_id"
-    t.integer  "time_period_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["report_id"], name: "index_periods_on_report_id"
-    t.index ["time_period_id"], name: "index_periods_on_time_period_id"
+    t.string   "parent_type"
+    t.integer  "parent_id"
+    t.integer  "period_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["parent_type", "parent_id"], name: "index_periods_on_parent_type_and_parent_id"
+    t.index ["period_id"], name: "index_periods_on_period_id"
   end
 
   create_table "reports", force: :cascade do |t|
