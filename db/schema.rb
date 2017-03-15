@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306215110) do
+ActiveRecord::Schema.define(version: 20170315212455) do
 
   create_table "reports", force: :cascade do |t|
     t.integer  "user_id"
@@ -21,6 +21,24 @@ ActiveRecord::Schema.define(version: 20170306215110) do
     t.datetime "updated_at",  null: false
     t.index ["report_id"], name: "index_reports_on_report_id"
     t.index ["user_id"], name: "index_reports_on_user_id"
+  end
+
+  create_table "taggables", force: :cascade do |t|
+    t.string   "parent_type"
+    t.integer  "parent_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["parent_type", "parent_id"], name: "index_taggables_on_parent_type_and_parent_id"
+    t.index ["tag_id"], name: "index_taggables_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "time_periods", force: :cascade do |t|

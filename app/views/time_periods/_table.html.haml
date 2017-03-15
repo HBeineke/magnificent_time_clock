@@ -4,7 +4,8 @@
       %th Date
       %th Work Start
       %th Work End
-      %th Work Time
+      %th Duration
+      %th Tag
 
 
   - time_periods.each do |r|
@@ -13,3 +14,4 @@
       %td= r.started_at.to_s(:time)
       %td= r.ended_at.to_s(:time)
       %td= r.duration
+      %td= r.tag.name

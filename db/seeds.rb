@@ -8,8 +8,14 @@
 User.delete_all
 Report.delete_all
 TimePeriod.delete_all
+Tag.delete_all
+Taggable.delete_all
 
 user = CreateAdminService.new.call
+
+tag_work = Tag.create(name: 'work')
+tag_break = Tag.create(name: 'break')
+tag_meeting = Tag.create(name: 'meeting')
 
 report_total = Reports::Root.create(user: user)
 report_year = Reports::Year.create(report: report_total, report_date: DateTime.new(2016, 1, 1))
@@ -21,7 +27,8 @@ report_week = Reports::Week.create(report: report_month, report_date: DateTime.n
   TimePeriod.create!(
     started_at: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
     ended_at: DateTime.new(2016, 1, d + 1, 17, 30),
-    report: report_day
+    report: report_day,
+    tag: tag_work 
   )
 end
 
@@ -31,7 +38,8 @@ end
   TimePeriod.create!(
     started_at: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
     ended_at: DateTime.new(2016, 1, d + 1, 17, 30),
-    report: report_day
+    report: report_day,
+    tag: tag_work 
   )
 end
 
@@ -46,7 +54,8 @@ report_week = Reports::Week.create(report: report_month, report_date: DateTime.n
   TimePeriod.create!(
     started_at: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
     ended_at: DateTime.new(2016, 1, d + 1, 17, 30),
-    report: report_day
+    report: report_day,
+    tag: tag_work 
   )
 end
 
@@ -56,6 +65,7 @@ end
   TimePeriod.create!(
     started_at: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
     ended_at: DateTime.new(2016, 1, d + 1, 17, 30),
-    report: report_day
+    report: report_day,
+    tag: tag_work 
   )
 end

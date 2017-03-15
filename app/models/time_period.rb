@@ -1,5 +1,7 @@
 class TimePeriod < ApplicationRecord
   belongs_to :report
+  has_one :taggable, as: :parent
+  has_one :tag, through: :taggable
 
   # decorator
   def duration
