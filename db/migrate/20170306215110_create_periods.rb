@@ -4,7 +4,7 @@ class CreatePeriods < ActiveRecord::Migration[5.0]
       t.datetime :started_at
       t.datetime :ended_at
       t.references :parent, polymorphic: true, index: true
-      t.belongs_to :period
+      t.belongs_to :period, index: true
 
       t.timestamps
     end
