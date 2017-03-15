@@ -1,4 +1,4 @@
-class TimePeriod < ApplicationRecord
+class Period < ApplicationRecord
   belongs_to :report
   has_one :taggable, as: :parent
   has_one :tag, through: :taggable
