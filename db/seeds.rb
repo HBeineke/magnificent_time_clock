@@ -24,12 +24,12 @@ goal = Goal.create!(
 goal.tags << tag_break
 
 report_total = Reports::Root.create(user: user)
-report_year = Reports::Year.create(report: report_total, report_date: DateTime.new(2016, 1, 1))
-report_month = Reports::Month.create(report: report_year, report_date: DateTime.new(2016, 1, 1))
-report_week = Reports::Week.create(report: report_month, report_date: DateTime.new(2016, 1, 1))
+report_year = Reports::Year.create(report: report_total, started_at: DateTime.new(2016, 1, 1))
+report_month = Reports::Month.create(report: report_year, started_at: DateTime.new(2016, 1, 1))
+report_week = Reports::Week.create(report: report_month, started_at: DateTime.new(2016, 1, 1))
 7.times.each do |day|
-  report_day = Reports::Day.create(report: report_week, report_date: DateTime.new(2016, 1, 1))
-  d = report_day.report_date.day + day + 1
+  report_day = Reports::Day.create(report: report_week, started_at: DateTime.new(2016, 1, 1))
+  d = report_day.started_at.day + day + 1
   Period.create!(
     started_at: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
     ended_at: DateTime.new(2016, 1, d + 1, 17, 30),
@@ -39,8 +39,8 @@ report_week = Reports::Week.create(report: report_month, report_date: DateTime.n
 end
 
 7.times.each do |day|
-  report_day = Reports::Day.create(report: report_week, report_date: DateTime.new(2016, 1, 8))
-  d = report_day.report_date.day + day + 1
+  report_day = Reports::Day.create(report: report_week, started_at: DateTime.new(2016, 1, 8))
+  d = report_day.started_at.day + day + 1
   Period.create!(
     started_at: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
     ended_at: DateTime.new(2016, 1, d + 1, 17, 30),
@@ -51,12 +51,12 @@ end
 
 
 
-report_year = Reports::Year.create(report: report_total, report_date: DateTime.new(2015, 1, 1))
-report_month = Reports::Month.create(report: report_year, report_date: DateTime.new(2015, 1, 1))
-report_week = Reports::Week.create(report: report_month, report_date: DateTime.new(2015, 1, 1))
+report_year = Reports::Year.create(report: report_total, started_at: DateTime.new(2015, 1, 1))
+report_month = Reports::Month.create(report: report_year, started_at: DateTime.new(2015, 1, 1))
+report_week = Reports::Week.create(report: report_month, started_at: DateTime.new(2015, 1, 1))
 7.times.each do |day|
-  report_day = Reports::Day.create(report: report_week, report_date: DateTime.new(2015, 1, 1))
-  d = report_day.report_date.day + day + 1
+  report_day = Reports::Day.create(report: report_week, started_at: DateTime.new(2015, 1, 1))
+  d = report_day.started_at.day + day + 1
   Period.create!(
     started_at: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
     ended_at: DateTime.new(2016, 1, d + 1, 17, 30),
@@ -66,8 +66,8 @@ report_week = Reports::Week.create(report: report_month, report_date: DateTime.n
 end
 
 7.times.each do |day|
-  report_day = Reports::Day.create(report: report_week, report_date: DateTime.new(2015, 1, 8))
-  d = report_day.report_date.day + day + 1
+  report_day = Reports::Day.create(report: report_week, started_at: DateTime.new(2015, 1, 8))
+  d = report_day.started_at.day + day + 1
   Period.create!(
     started_at: DateTime.new(2016, 1, d + 1, 17) - 8.hours,
     ended_at: DateTime.new(2016, 1, d + 1, 17, 30),

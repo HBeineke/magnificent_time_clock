@@ -3,8 +3,10 @@ class CreateReports < ActiveRecord::Migration[5.0]
     create_table :reports do |t|
       t.belongs_to :user, index: true
       t.belongs_to :report, index: true
+      t.belongs_to :root, index: true
       t.string :type
-      t.datetime :report_date
+      t.datetime :started_at
+      t.datetime :ended_at
 
       t.timestamps
     end

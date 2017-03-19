@@ -12,6 +12,6 @@
     %tr
       %td= r.started_at.to_date
       %td= r.started_at.to_s(:time)
-      %td= r.ended_at.to_s(:time)
+      %td= r.ended_at.try(:to_s, :time) 
       %td= r.duration
       %td= r.tag.name

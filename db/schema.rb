@@ -38,11 +38,14 @@ ActiveRecord::Schema.define(version: 20170315215359) do
   create_table "reports", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "report_id"
+    t.integer  "root_id"
     t.string   "type"
-    t.datetime "report_date"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["report_id"], name: "index_reports_on_report_id"
+    t.index ["root_id"], name: "index_reports_on_root_id"
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
