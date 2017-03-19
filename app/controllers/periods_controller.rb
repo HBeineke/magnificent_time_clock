@@ -7,10 +7,9 @@ class PeriodsController < ApplicationController
     @period.report_root_id = current_user.report.id
     @period.tag = Tag.where(name: 'work').first
 
-    if @period.save!
+    if PeriodFactory.new(DateTime.current, current_user.report.id, 'work').create!
       flash[:notice] = "Thanks for your comment"
       render 'new'
-
     else
       flash.now[:error] = "#{@recipe.errors.full_messages}"
       render 'new'

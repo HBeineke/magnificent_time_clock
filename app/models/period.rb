@@ -1,16 +1,14 @@
 class Period < ApplicationRecord
-  belongs_to :parent, polymorphic: true
+  belongs_to :parent, polymorphic: true, optional: true
   has_one :taggable, as: :parent
   has_one :tag, through: :taggable
-
-  before_validation :default_started_at, :find_or_create_report_day
 
   attr_accessor :report_root_id
 
   # decorator
   def duration
     return unless ended_at
-    
+
     ((ended_at - started_at) / 1.hour).round
   end
 
