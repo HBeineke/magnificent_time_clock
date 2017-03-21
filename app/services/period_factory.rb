@@ -10,7 +10,9 @@ class PeriodFactory
     day = Reports::Day.find_or_initialize_by(started_at: @date.beginning_of_day, ended_at: @date.end_of_day)
     day.periods << period
 
-    week = Reports::Week.find_or_initialize_by(started_at: @date.beginning_of_week, ended_at: @date.end_of_week)
+    beginning_of_week = @date.beginning_of_week.month != @date.month ? @date.beginning_of_month : @date.beginning_of_week
+    end_of_week = @date.end_of_week.month != @date.month ? @date.end_of_month : @date.end_of_week
+    week = Reports::Week.find_or_initialize_by(started_at: beginning_of_week, ended_at: end_of_week)
     week.reports << day
 
     month = Reports::Month.find_or_initialize_by(started_at: @date.beginning_of_month, ended_at: @date.end_of_month)
