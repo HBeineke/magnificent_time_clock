@@ -3,8 +3,9 @@ class CreateAgreements < ActiveRecord::Migration[5.0]
     create_table :agreements do |t|
       t.string :name
       t.string :description
+      t.string :report_type
       t.belongs_to :report, index: true
-      t.belongs_to :taggable, index: true
+      t.belongs_to :tag, index: true
 
       t.timestamps
     end

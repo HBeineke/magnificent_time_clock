@@ -11,10 +11,12 @@ Period.delete_all
 Tag.delete_all
 Taggable.delete_all
 Agreement.delete_all
+AgreementReplacement.delete_all
+AgreementInterrupt.delete_all
 
 tag_work = Tag.create(name: 'work')
 tag_break = Tag.create(name: 'break')
-tag_meeting = Tag.create(name: 'meeting')
+tag_holiday = Tag.create(name: 'holiday')
 
 user = CreateAdminService.new.call
 report_total = Reports::Root.create(user: user)
@@ -22,7 +24,27 @@ report_total = Reports::Root.create(user: user)
 agreement = Agreement.create!(
   report: report_total,
   tag: tag_work,
-  period: Period.create(started_at: Time.now, ended_at: Time.now + 40.hours)
+  period: Period.create(started_at: Time.now, ended_at: Time.now + 40.hours),
+  report_type: Reports::Week.model_name
+)
+
+AgreementReplacement.create!(
+  agreement: agreement,
+  tag: tag_holiday,
+  report_type: Reports::Day.model_name,
+  period: Period.create(started_at: Time.now, ended_at: Time.now + 8.hours)
+)
+
+AgreementInterrupt.create!(
+  agreement: agreement,
+  tag: tag_break
+)
+
+Agreement.create!(
+  report: report_total,
+  tag: tag_holiday,
+  period: Period.create(started_at: Time.now, ended_at: Time.now + 25.days),
+  report_type: Reports::Year.model_name
 )
 
 report_year = Reports::Year.create(report: report_total, started_at: DateTime.new(2016, 1, 1))

@@ -10,17 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170315215359) do
+ActiveRecord::Schema.define(version: 20170322221905) do
+
+  create_table "agreement_interrupts", force: :cascade do |t|
+    t.integer  "agreement_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["agreement_id"], name: "index_agreement_interrupts_on_agreement_id"
+    t.index ["tag_id"], name: "index_agreement_interrupts_on_tag_id"
+  end
+
+  create_table "agreement_replacements", force: :cascade do |t|
+    t.integer  "agreement_id"
+    t.integer  "tag_id"
+    t.string   "report_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["agreement_id"], name: "index_agreement_replacements_on_agreement_id"
+    t.index ["tag_id"], name: "index_agreement_replacements_on_tag_id"
+  end
 
   create_table "agreements", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
+    t.string   "report_type"
     t.integer  "report_id"
-    t.integer  "taggable_id"
+    t.integer  "tag_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["report_id"], name: "index_agreements_on_report_id"
-    t.index ["taggable_id"], name: "index_agreements_on_taggable_id"
+    t.index ["tag_id"], name: "index_agreements_on_tag_id"
   end
 
   create_table "periods", force: :cascade do |t|
