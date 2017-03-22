@@ -10,20 +10,21 @@ Report.delete_all
 Period.delete_all
 Tag.delete_all
 Taggable.delete_all
+Agreement.delete_all
 
 tag_work = Tag.create(name: 'work')
 tag_break = Tag.create(name: 'break')
 tag_meeting = Tag.create(name: 'meeting')
 
 user = CreateAdminService.new.call
-goal = Goal.create!(
-  user: user,
+report_total = Reports::Root.create(user: user)
+
+agreement = Agreement.create!(
+  report: report_total,
   tag: tag_work,
   period: Period.create(started_at: Time.now, ended_at: Time.now + 40.hours)
 )
-goal.tags << tag_break
 
-report_total = Reports::Root.create(user: user)
 report_year = Reports::Year.create(report: report_total, started_at: DateTime.new(2016, 1, 1))
 report_month = Reports::Month.create(report: report_year, started_at: DateTime.new(2016, 1, 1))
 report_week = Reports::Week.create(report: report_month, started_at: DateTime.new(2016, 1, 1))

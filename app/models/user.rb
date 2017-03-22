@@ -12,5 +12,4 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :report
-  has_many :goals
 end
