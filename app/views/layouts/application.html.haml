@@ -10,6 +10,7 @@
   %body
     %header
       = render 'layouts/navigation'
+
     %main{:role => "main"}
       .row
         .columns
@@ -17,3 +18,17 @@
       .row
         .columns
           = yield
+
+    - if current_user
+      %footer
+        .row
+          .columns
+            .footer
+              .row
+                .columns
+                  = render 'periods/period', report_root: current_report_root, period: nil
+
+              - running_periods.each do |rp|
+                .row
+                  .columns
+                    = render 'periods/period', period: rp

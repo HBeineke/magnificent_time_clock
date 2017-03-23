@@ -1,0 +1,5 @@
+- if period
+  = period.started_at
+  = link_to 'End', period_path(period), method: :patch
+- else
+  = link_to 'Start', periods_path(report_id: report_root), method: :post

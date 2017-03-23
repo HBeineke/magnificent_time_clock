@@ -1,18 +1,28 @@
 class PeriodsController < ApplicationController
-  def new
+  def create
+    report_id = params[:report_id]
+    period = Period.new
+    period.tag = Tag.where(name: 'work').first
+
+    if PeriodFactory.new(DateTime.current, report_id, 'work').create!
+      flash[:notice] = "Period created"
+      redirect_to(:back)
+    else
+      flash.now[:error] = "#{period.errors.full_messages}"
+      redirect_to(:back)
+    end
   end
 
-  def create
-    @period = Period.new
-    @period.report_root_id = current_user.report.id
-    @period.tag = Tag.where(name: 'work').first
+  def update
+    period = Period.find(params[:id])
+    period.ended_at = DateTime.current
 
-    if PeriodFactory.new(DateTime.current, current_user.report.id, 'work').create!
-      flash[:notice] = "Thanks for your comment"
-      render 'new'
+    if period.save
+      flash[:notice] = "Period updated"
+      redirect_to(:back)
     else
-      flash.now[:error] = "#{@recipe.errors.full_messages}"
-      render 'new'
+      flash.now[:error] = "#{period.errors.full_messages}"
+      redirect_to(:back)
     end
   end
 end

@@ -19,5 +19,5 @@ Rails.application.routes.draw do
     resources :days, only: [:show]
   end
 
-  resources :periods, only: [:new, :create]
+  resources :periods, only: [:create, :update]
 end

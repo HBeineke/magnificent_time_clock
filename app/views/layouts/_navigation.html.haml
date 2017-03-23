@@ -4,7 +4,6 @@
       %ul.menu
         %li.menu-text Magnificent Time Clock
         - if current_user
-          %li= link_to 'New Period', new_period_path
           - current_user.reports.each do |r|
             %li= link_to r.name, r
 
