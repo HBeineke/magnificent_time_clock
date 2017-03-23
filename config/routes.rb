@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  root to: 'reports/roots#show'
+  devise_scope :user do
+    authenticated :user do
+      root 'periods#new', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
+
   devise_for :users, :path => 'accounts'
 
   namespace :reports do

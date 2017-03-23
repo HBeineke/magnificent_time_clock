@@ -32,8 +32,6 @@ ActiveRecord::Schema.define(version: 20170322221905) do
   end
 
   create_table "agreements", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
     t.string   "report_type"
     t.integer  "report_id"
     t.datetime "created_at",  null: false
@@ -54,13 +52,15 @@ ActiveRecord::Schema.define(version: 20170322221905) do
   end
 
   create_table "reports", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
     t.integer  "user_id"
     t.integer  "report_id"
     t.string   "type"
     t.datetime "started_at"
     t.datetime "ended_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["report_id"], name: "index_reports_on_report_id"
     t.index ["user_id"], name: "index_reports_on_user_id"
   end

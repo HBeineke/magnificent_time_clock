@@ -19,10 +19,10 @@ tag_break = Tag.create(name: 'break')
 tag_holiday = Tag.create(name: 'holiday')
 
 user = CreateAdminService.new.call
-report_total = Reports::Root.create(user: user)
+report_root = Reports::Root.create(user: user, name: 'InfluencerDB')
 
 agreement = Agreement.create!(
-  report: report_total,
+  report: report_root,
   tag: tag_work,
   period: Period.create(started_at: Time.now, ended_at: Time.now + 40.hours),
   report_type: Reports::Week.model_name
@@ -41,13 +41,13 @@ AgreementInterrupt.create!(
 )
 
 Agreement.create!(
-  report: report_total,
+  report: report_root,
   tag: tag_holiday,
   period: Period.create(started_at: Time.now, ended_at: Time.now + 25.days),
   report_type: Reports::Year.model_name
 )
 
-report_year = Reports::Year.create(report: report_total, started_at: DateTime.new(2016, 1, 1))
+report_year = Reports::Year.create(report: report_root, started_at: DateTime.new(2016, 1, 1))
 report_month = Reports::Month.create(report: report_year, started_at: DateTime.new(2016, 1, 1))
 report_week = Reports::Week.create(report: report_month, started_at: DateTime.new(2016, 1, 1))
 7.times.each do |day|
@@ -74,7 +74,7 @@ end
 
 
 
-report_year = Reports::Year.create(report: report_total, started_at: DateTime.new(2015, 1, 1))
+report_year = Reports::Year.create(report: report_root, started_at: DateTime.new(2015, 1, 1))
 report_month = Reports::Month.create(report: report_year, started_at: DateTime.new(2015, 1, 1))
 report_week = Reports::Week.create(report: report_month, started_at: DateTime.new(2015, 1, 1))
 7.times.each do |day|
