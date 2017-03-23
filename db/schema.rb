@@ -36,11 +36,9 @@ ActiveRecord::Schema.define(version: 20170322221905) do
     t.string   "description"
     t.string   "report_type"
     t.integer  "report_id"
-    t.integer  "tag_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["report_id"], name: "index_agreements_on_report_id"
-    t.index ["tag_id"], name: "index_agreements_on_tag_id"
   end
 
   create_table "periods", force: :cascade do |t|

@@ -4,11 +4,7 @@ class Agreement < ApplicationRecord
   has_many :agreement_interrupts
   has_many :agreement_replacements
 
-  belongs_to :tag
-  def tag=(tag)
-    self.taggable = Taggable.create(tag: tag)
-  end
-  def tag
-    taggable.tag
-  end
+  has_one :taggable, as: :parent
+  has_one :tag, through: :taggable
+
 end

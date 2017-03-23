@@ -5,7 +5,6 @@ class CreateAgreements < ActiveRecord::Migration[5.0]
       t.string :description
       t.string :report_type
       t.belongs_to :report, index: true
-      t.belongs_to :tag, index: true
 
       t.timestamps
     end
